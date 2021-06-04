@@ -11,7 +11,7 @@ impl_downcast!(Resource);
 /// internally in the `Dispatcher`'s logic.
 /// Import this if you get errors where RefLifetime is not implemented for
 /// your systems.
-pub(crate) trait RefLifetime {}
+pub trait RefLifetime {}
 impl<'a, T> RefLifetime for AtomicRef<'a, T> {}
 impl<'a, T> RefLifetime for AtomicRefMut<'a, T> {}
 impl<'a, T> RefLifetime for &'a T {}

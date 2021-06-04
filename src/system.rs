@@ -4,11 +4,10 @@ use crate::*;
 /// This struct is also used internally by the `Dispatcher` to create a coherent
 /// execution sequence.
 pub struct System {
-    pub(crate) initialize: Box<dyn Fn(&mut World) + Send>,
-    pub(crate) lock:
-        Box<dyn Fn(*const World, *mut Vec<Box<dyn RefLifetime>>) -> SystemResult + Send>,
-    pub(crate) run_fn: Box<dyn FnMut(&World) -> SystemResult + Send>,
-    pub(crate) name: &'static str,
+    pub initialize: Box<dyn Fn(&mut World) + Send>,
+    pub lock: Box<dyn Fn(*const World, *mut Vec<Box<dyn RefLifetime>>) -> SystemResult + Send>,
+    pub run_fn: Box<dyn FnMut(&World) -> SystemResult + Send>,
+    pub name: &'static str,
 }
 
 impl System {
